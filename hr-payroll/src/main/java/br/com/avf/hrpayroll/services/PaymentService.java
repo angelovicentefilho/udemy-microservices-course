@@ -5,16 +5,16 @@ import org.springframework.stereotype.Service;
 
 import br.com.avf.hrpayroll.entities.Payment;
 import br.com.avf.hrpayroll.entities.Worker;
-import br.com.avf.hrpayroll.feign.WorkerFeignClients;
+import br.com.avf.hrpayroll.feign.WorkerFeignClient;
 
 @Service
 public class PaymentService {
 
 
-	private final WorkerFeignClients template;
+	private final WorkerFeignClient template;
 
 	@Autowired
-	public PaymentService(WorkerFeignClients template) {
+	public PaymentService(WorkerFeignClient template) {
 		this.template = template;
 	}
 

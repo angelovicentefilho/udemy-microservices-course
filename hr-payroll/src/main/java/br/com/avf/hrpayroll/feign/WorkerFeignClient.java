@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import br.com.avf.hrpayroll.entities.Worker;
 
 @Service
-@FeignClient(name = "hr-worker", url = "http://localhost:8001", path = "/workers")
-public interface WorkerFeignClients {
+@FeignClient(name = "hr-worker", path = "/workers")
+public interface WorkerFeignClient {
 
 	@GetMapping("/{id}")
 	ResponseEntity<Worker> findById(@PathVariable Long id);

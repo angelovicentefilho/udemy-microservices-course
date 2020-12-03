@@ -3,6 +3,7 @@ package br.com.avf.hrworker.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,17 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.avf.hrworker.entities.Worker;
 import br.com.avf.hrworker.repositories.WorkerRepository;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @CrossOrigin
 @RequestMapping("/workers")
 public class WorkerResource {
 
 	private final WorkerRepository repository;
+	private final Environment environment;
 	
 	@Autowired
-	public WorkerResource(WorkerRepository repository) {
+	public WorkerResource(WorkerRepository repository, Environment environment) {
 		this.repository = repository;
+		this.environment = environment;
 	}
 	
 	@GetMapping
@@ -33,6 +38,9 @@ public class WorkerResource {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
+		
+		log.info(">>> Port:......'{}'", this.environment.getProperty("local.server.port"));;
+		
 		Worker worker = repository.findById(id).orElseThrow(()-> new RuntimeException("Worker not found!!!"));
 		return ResponseEntity.ok(worker);
 	}
