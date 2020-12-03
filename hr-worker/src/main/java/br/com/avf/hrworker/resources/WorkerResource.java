@@ -3,6 +3,7 @@ package br.com.avf.hrworker.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,10 +25,19 @@ public class WorkerResource {
 	private final WorkerRepository repository;
 	private final Environment environment;
 	
+	@Value("${test.config}")
+	private String configuration;
+	
 	@Autowired
 	public WorkerResource(WorkerRepository repository, Environment environment) {
 		this.repository = repository;
 		this.environment = environment;
+	}
+	
+	@GetMapping("/configs")
+	public ResponseEntity<Void> getConfigs() {
+		log.info("Configuration:.....'{}'",configuration);
+		return ResponseEntity.noContent().build();
 	}
 	
 	@GetMapping
