@@ -23,7 +23,7 @@ public class HrUserApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		log.info(">>> '{}'", encoder.encode("123"));
+//		log.info(">>> '{}'", encoder.encode("123"));
 	}
 
 }
