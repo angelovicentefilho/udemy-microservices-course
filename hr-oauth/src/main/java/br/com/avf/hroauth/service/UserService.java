@@ -1,15 +1,16 @@
 package br.com.avf.hroauth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import br.com.avf.hroauth.clients.UserFeignClient;
 import br.com.avf.hroauth.entities.User;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
 	private final UserFeignClient client;
 
@@ -19,13 +20,16 @@ public class UserService {
 	}
 
 	public User findByEmail(String email) {
-		log.info(">>> Find by email '{}'", email);
 		User user = client.findByEmail(email).getBody();
 		if (user == null) {
-			log.error("Email not found '{}'", email);
-			throw new IllegalArgumentException("Email not found!!");
+			throw new UsernameNotFoundException("Email not found!!");
 		}
 		return user;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return findByEmail(username);
 	}
 
 }
