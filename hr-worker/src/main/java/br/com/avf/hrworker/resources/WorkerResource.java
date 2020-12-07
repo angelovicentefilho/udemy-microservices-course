@@ -26,21 +26,13 @@ public class WorkerResource {
 
 	private final WorkerRepository repository;
 	private final Environment environment;
-	
-	@Value("${test.config}")
-	private String configuration;
-	
+		
 	@Autowired
 	public WorkerResource(WorkerRepository repository, Environment environment) {
 		this.repository = repository;
 		this.environment = environment;
 	}
-	
-	@GetMapping("/configs")
-	public ResponseEntity<Void> getConfigs() {
-		log.info("Configuration:.....'{}'",configuration);
-		return ResponseEntity.noContent().build();
-	}
+
 	
 	@GetMapping
 	public ResponseEntity<?> findAll() {
