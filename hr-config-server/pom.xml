@@ -28,6 +28,14 @@
 		<developerConnection>scm:git:https://github.com/angelovicentefilho/udemy-microservices-course.git</developerConnection>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>internal.repo</id>
+			<name>Repositorio Interno</name>
+			<url>file:///home/angelo/clients/particular/udemy-microservices-course/releases</url>
+		</repository>
+	</distributionManagement>
+
 
 	<dependencies>
 		<dependency>
