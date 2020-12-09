@@ -1,0 +1,14 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: hr-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/angelovicentefilho/udemy-microservices-course-config
+          default-label: main
+          password: Java3482379
+          username: angelovicentefilho
+          skip-ssl-validation: false
