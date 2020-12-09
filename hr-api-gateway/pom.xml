@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>br.com.avf</groupId>
 	<artifactId>hr-api-gateway</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>hr-api-gateway</name>
 	<description>Api Gateway Service</description>
 
@@ -25,7 +25,7 @@
 		<connection>scm:git:https://github.com/angelovicentefilho/udemy-microservices-course.git</connection>
 		<url>https://github.com/angelovicentefilho/udemy-microservices-course</url>
 		<developerConnection>scm:git:https://github.com/angelovicentefilho/udemy-microservices-course.git</developerConnection>
-		<tag>hr-api-gateway-1.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<distributionManagement>
