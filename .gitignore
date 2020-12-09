@@ -34,3 +34,6 @@ build/
 
 ### STS ###
 .metadata
+
+### RELEASES ###
+/releases/
